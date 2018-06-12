@@ -34,3 +34,21 @@ def append_to_file(path, data): #what file to append to and what data to add
 def delete_file_contents(path):
     with  open(path, 'w'):
         pass
+
+#Read a file and convert each line to set items
+
+def file_to_set(file_name):
+    results = set() #an empty set
+    with open(file_name,'rt') as f: #read text files as f
+        for line in f:
+            results.add(line.replace('\n','')) #add each line to the set and replace the new lines with '' cuz we dont need new lines in a set
+    return results #returning the value of results
+
+#Iterate through a set ,each item will be a new line in the file
+
+def set_to_file(links, file): #the links we wanna save to the particular file
+    delete_file_contents(file)
+    for link in sorted(links): #sort in alphabetical order
+        append_to_file(file,link)
+
+
